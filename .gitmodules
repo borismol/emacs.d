@@ -1,0 +1,3 @@
+[submodule "themes/monokai-emacs"]
+	path = themes/monokai-emacs
+	url = https://github.com/borismol/monokai-emacs.git
