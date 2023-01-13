@@ -60,7 +60,7 @@
 (evil-mode 1)
 
 (require 'key-chord)
-(setq key-chord-two-keys-delay 0.1)
+(setq key-chord-two-keys-delay 0.2)
 (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
 (key-chord-mode 1)
 
@@ -75,3 +75,7 @@
 
 (require-package 'ace-window)
 (global-set-key (kbd "C-x o") 'ace-window)
+
+(add-hook 'after-save-hook #'evil-normal-state)
+
+(fset 'yes-or-no-p 'y-or-n-p)
