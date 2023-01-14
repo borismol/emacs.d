@@ -66,9 +66,12 @@
 
 (require-package 'slime)
 (setq inferior-lisp-program "/opt/sbcl/bin/sbcl")
+(require-package 'slime-company)
+(slime-setup '(slime-fancy slime-company))
 
 (require-package 'lispy)
 (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1)))
+(add-hook 'emacs-lisp-mode-hook (lambda () (company-mode 1)))
 (add-hook 'lisp-mode-hook (lambda () (lispy-mode 1)))
 
 (global-set-key (kbd "C-c d") 'kill-whole-line)
