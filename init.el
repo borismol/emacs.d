@@ -1,5 +1,6 @@
 ;; -*- lexical-binding: t -*-
 
+(set-default-font "UbuntuMono Nerd Font-12")
 (require 'package)
 (require 'cl-lib)
 
@@ -82,3 +83,13 @@
 (add-hook 'after-save-hook #'evil-normal-state)
 
 (fset 'yes-or-no-p 'y-or-n-p)
+
+(require-package 'eval-in-repl)
+(require 'eval-in-repl-slime)
+(add-hook 'lisp-mode-hook
+          (lambda ()
+            (define-key slime-mode-map (kbd "C-c C-e") 'eir-eval-in-slime)))
+
+(add-hook 'cider-repl-mode-hook #'company-mode)
+(add-hook 'cider-mode-hook #'company-mode)
+(add-hook 'cider-mode-hook #'lispy-mode)
