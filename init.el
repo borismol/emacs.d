@@ -1,6 +1,28 @@
 ;; -*- lexical-binding: t -*-
 
-(set-default-font "UbuntuMono Nerd Font-12")
+(setq default-frame-alist '((undecorated . t)))
+(add-to-list 'default-frame-alist '(drag-internal-border . 1))
+(add-to-list 'default-frame-alist '(internal-border-width . 5))
+
+(defun set-frame-size-according-to-resolution ()
+  (interactive)
+  (if (display-graphic-p)
+  (progn
+    (if (> (x-display-pixel-width) 1280)
+           (add-to-list 'default-frame-alist (cons 'width 160))
+           (add-to-list 'default-frame-alist (cons 'width 80)))
+    ;; for the height, subtract a couple hundred pixels
+    ;; from the screen height (for panels, menubars and
+    ;; whatnot), then divide by the height of a char to
+    ;; get the height we want
+    (add-to-list 'default-frame-alist
+         (cons 'height (/ (- (x-display-pixel-height) 1000)
+                             (frame-char-height)))))))
+
+(set-frame-size-according-to-resolution)
+
+;;(set-default-font "UbuntuMono Nerd Font-12")
+(set-frame-font "Ubuntu Mono-11" nil t)
 (require 'package)
 (require 'cl-lib)
 
