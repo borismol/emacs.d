@@ -21,6 +21,9 @@
 
 (set-frame-size-according-to-resolution)
 
+(setq grep-command "ag --vimgrep "
+      grep-use-null-device nil)
+
 ;;(set-default-font "UbuntuMono Nerd Font-12")
 (set-frame-font "Ubuntu Mono-11" nil t)
 (require 'package)
