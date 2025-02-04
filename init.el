@@ -51,6 +51,12 @@
 
 (add-to-list 'custom-theme-load-path (expand-file-name "themes/monokai-emacs" user-emacs-directory))
 
+(setq monokai-height-minus-1 1.0
+      monokai-height-plus-1 1.0
+      monokai-height-plus-2 1.0
+      monokai-height-plus-3 1.0
+      monokai-height-plus-4 1.0)
+
 (load-theme 'monokai t)
 
 (global-display-line-numbers-mode)
@@ -118,3 +124,16 @@
 (add-hook 'cider-repl-mode-hook #'company-mode)
 (add-hook 'cider-mode-hook #'company-mode)
 (add-hook 'cider-mode-hook #'lispy-mode)
+
+;; System locale to use for formatting time values.
+(setq system-time-locale "C")         ; Make sure that the weekdays in the
+                                      ; time stamps of your Org mode files and
+                                      ; in the agenda appear in English.
+
+(global-set-key (kbd "C-c l") #'org-store-link)
+(global-set-key (kbd "C-c a") #'org-agenda)
+(global-set-key (kbd "C-c c") #'org-capture)
+(setq org-log-done 'time)
+(setq org-startup-indented t)
+(setq ring-bell-function 'ignore)
+(setq org-enforce-todo-dependencies t)
